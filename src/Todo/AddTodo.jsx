@@ -1,28 +1,34 @@
 import React from 'react'
 
-const AddTodo = ({ handleAddTodo }) => {
+class AddTodo extends React.Component {
     //
-
-    const handleSubmit = (event) => {
+    constructor(props) {
+        super(props)
+        this.state = {
+            error: undefined
+        }
+    }
+    handleSubmit = (event) => {
         event.preventDefault();
         console.log(event.target, event.currentTarget.todo.value);
         const option = event.currentTarget.todo.value;
         if (option) {
-            handleAddTodo(option);
-            // data.todos.unshift(option);
+            const error = this.props.handleAddTodo(option);
+            this.setState({ error })
             event.currentTarget.todo.value = '';
-            // this.state.todos.push('')
         }
     }
-
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="todo" />
-                <button>Add Todo</button>
-            </form>
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="todo" />
+                    <button>Add Todo</button>
+                </form>
+            </div>
+        )
+    }
 }
 
 export default AddTodo

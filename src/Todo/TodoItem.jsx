@@ -1,9 +1,9 @@
 import React from 'react'
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, handleDeleteTodoItem }) => {
     return (
         <div>
-            {todo}
+            {todo} <button onClick={() => handleDeleteTodoItem(todo)}> X </button>
         </div>
     )
 }
