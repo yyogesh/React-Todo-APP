@@ -1,4 +1,6 @@
 import React, { Component, PureComponent } from 'react'
+import DotNotation from '../components/DotNotation';
+import Story from '../components/Story';
 import Action from './Action';
 import AddTodo from './AddTodo';
 import Header from './Header';
@@ -6,7 +8,7 @@ import TodoList from './TodoList';
 
 class Todo extends PureComponent {
     state = {
-        todos: ['Study', 'Playing']
+        todos: ['Study', 'Playing'],
     }
     data = {
         title: 'Todo list',
@@ -58,14 +60,34 @@ class Todo extends PureComponent {
         console.log('UNSAFE_componentWillMount .....')
     }
 
+
     render() {
         console.log('render ', this.state.todos)
         return (
             <div>
-                <Header title={this.data.title} subTitle={this.data.subTitle} />
+                <Header title={this.data.title} subTitle={this.data.subTitle} >
+                    component content data
+                </Header>
                 <Action hasTodos={this.state.todos.length} handleRemoveAll={this.removeAll} handleRandomOptionPick={this.handleRandomOptionPick} />
                 <TodoList todos={this.state.todos} handleDeleteTodoItem={this.handleDeleteTodoItem} />
                 <AddTodo handleAddTodo={this.handleAddTodo} />
+                <DotNotation.DatePicker color="green">
+
+                </DotNotation.DatePicker>
+                <DotNotation.DatePicker color="blue"></DotNotation.DatePicker>
+                <Story storyType="photo" isColor />
+                <Story storyType="video" isColor="test" />
+                {/* <MyComponent message="&lt;3" />
+                <MyComponent message={'<3'} /> */}
+
+                {/* function App1() {
+                    return <Greeting firstName="Ben" lastName="Hector" />;
+                    }
+
+                    function App2() {
+                    const props = {firstName: 'Ben', lastName: 'Hector'};
+                    return <Greeting {...props} />;
+                    } */}
             </div>
         )
     }
