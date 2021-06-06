@@ -88,6 +88,17 @@ class Todo extends PureComponent {
                     const props = {firstName: 'Ben', lastName: 'Hector'};
                     return <Greeting {...props} />;
                     } */}
+                <div />
+
+                <div></div>
+
+                <div>test {String(false)} test</div>
+
+                <div>{null}</div>
+
+                <div>{undefined}</div>
+
+                <div>{true}</div>
             </div>
         )
     }
